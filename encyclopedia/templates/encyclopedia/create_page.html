@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Page
+{% endblock %}
+
+{% block body %}
+    {% if message %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endif %}
+
+    <h1>New entry</h1>
+
+    <form action="{% url 'create_page' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" class="form-control my-3" name="title" placeholder="Entry title">
+        <textarea class="form-control mb-3" name="content" id="content" rows="10" datat-provide="markdown" placeholder="Markdown content"></textarea>
+        <button type="submit" class="btn btn-dark">Save</button>
+    </form>
+
+{% endblock %}
